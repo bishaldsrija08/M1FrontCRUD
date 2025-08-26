@@ -1,14 +1,19 @@
-import "./App.css"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Contact from "./pages/Contact"
+
 function App() {
-  const name = "Bishal Rijal"
-  const cssObj = {
-    color: "white"
-  }
 
   return (
     <>
-    <h1>Hello World!{1+1}</h1>
-    <h2 style={cssObj}>{name}</h2>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/about" element={<About/>}/>
+          <Route path="/contact" element={<Contact/>}/>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
