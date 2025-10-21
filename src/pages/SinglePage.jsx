@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Navbar from "../component/Navbar";
 
 const SinglePage = () => {
@@ -8,7 +8,7 @@ const SinglePage = () => {
     const { id } = useParams();
     const [blog, setBlog] = useState({})
     const fetchSingleBlog = async () => {
-        const response = await axios.get(`http://localhost:3000/single/${id}`)
+        const response = await axios.get(`https://m1crud.onrender.com/single/${id}`)
         setBlog(response.data.data)
         console.log(response.data.data)
     }
@@ -17,7 +17,7 @@ const SinglePage = () => {
     }, [])
 
     const handleDelete = async () => {
-        const response = await axios.delete(`http://localhost:3000/delete/${id}`);
+        const response = await axios.delete(`https://m1crud.onrender.com/delete/${id}`);
         if (response.status === 200) {
             alert("Blog deleted successfully");
             navigate("/");
@@ -52,7 +52,7 @@ const SinglePage = () => {
                         <h4 className="text-sm font-semibold text-gray-600 dark:text-gray-400">5 MIN READ</h4>
                     </div>
                     <div className="flex justify-center">
-                        <button className="bg-blue-500 text-white m-3 px-4 py-2 rounded">Edit</button>
+                        <Link to={`/edit/${blog._id}`} className="bg-blue-500 text-white m-3 px-4 py-2 rounded">Edit</Link>
                         <button onClick={handleDelete} className="bg-red-500 text-white px-4 m-3 py-2 rounded">Delete</button>
                     </div>
                 </div>

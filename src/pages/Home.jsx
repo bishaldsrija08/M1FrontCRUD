@@ -6,7 +6,7 @@ import Navbar from "../component/Navbar"
 const Home = () => {
   const [blog, setBlog] = useState([])
   const fetchAllBlogs = async () => {
-    const response = await axios.get("http://localhost:3000/")
+    const response = await axios.get("https://m1crud.onrender.com/")
     setBlog(response.data.data)
     // console.log(response.data.data)
   }
